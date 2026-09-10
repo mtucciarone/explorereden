@@ -11,8 +11,9 @@ use crate::gui::theme::{
     ThemeMode, ThemePalette, apply_font_to_context, get_default_palette, set_palette,
 };
 use crate::gui::utils::{
-    SortColumn, SortKey, clear_clipboard_files, get_clipboard_files, is_clipboard_cut,
-    set_clipboard_files, shell_delete_to_recycle_bin, show_copy_move_dialog, sort_files_by_keys,
+    ClipboardFileRead, SortColumn, SortKey, clear_clipboard_files, is_clipboard_cut,
+    read_clipboard_files, set_clipboard_files, shell_delete_to_recycle_bin, show_copy_move_dialog,
+    sort_files_by_keys,
 };
 use crate::gui::windows::about::draw_about_window;
 use crate::gui::windows::containers::enums::{
@@ -856,18 +857,21 @@ impl MainWindow {
     pub fn handle_context_action(&mut self, action: ItemViewerContextAction) {
         match action {
             ItemViewerContextAction::Cut(paths) => {
-                let _ = set_clipboard_files(&paths, true);
-                mark_clipboard_dirty();
-                if let Some(first) = paths.first() {
-                    let side = self.focused_split;
-                    let explorer_state = &mut self.active_tab_mut().view_mut(side).explorer_state;
-                    explorer_state.selected_paths.clear();
-                    explorer_state.selected_paths.insert(first.clone());
+                if set_clipboard_files(self.hwnd, &paths, true) {
+                    mark_clipboard_dirty();
+                    if let Some(first) = paths.first() {
+                        let side = self.focused_split;
+                        let explorer_state =
+                            &mut self.active_tab_mut().view_mut(side).explorer_state;
+                        explorer_state.selected_paths.clear();
+                        explorer_state.selected_paths.insert(first.clone());
+                    }
                 }
             }
             ItemViewerContextAction::Copy(paths) => {
-                let _ = set_clipboard_files(&paths, false);
-                mark_clipboard_dirty();
+                if set_clipboard_files(self.hwnd, &paths, false) {
+                    mark_clipboard_dirty();
+                }
             }
             ItemViewerContextAction::CopyPath(paths) => {
                 use crate::gui::utils::copy_text_to_clipboard;
@@ -877,7 +881,7 @@ impl MainWindow {
                     paths.iter().map(|p| p.display().to_string()).collect();
 
                 let text = path_strings.join("\r\n");
-                let _ = copy_text_to_clipboard(&text);
+                let _ = copy_text_to_clipboard(self.hwnd, &text);
             }
             ItemViewerContextAction::Paste => {
                 if let Err(e) = self.paste_clipboard_native() {
@@ -1014,13 +1018,12 @@ impl MainWindow {
     pub fn paste_clipboard_native(&mut self) -> windows::core::Result<()> {
         use windows::Win32::System::Com::{CLSCTX_ALL, CoCreateInstance};
         use windows::Win32::UI::Shell::{
-            FOF_ALLOWUNDO, FOF_NOCONFIRMMKDIR, FOF_RENAMEONCOLLISION, FileOperation,
-            IFileOperation, IShellItem, SHCreateItemFromParsingName,
+            FOF_ALLOWUNDO, FileOperation, IFileOperation, IShellItem, SHCreateItemFromParsingName,
         };
         use windows::core::HSTRING;
 
-        let paths = match get_clipboard_files() {
-            Some(p) if !p.is_empty() => p,
+        let paths = match read_clipboard_files() {
+            ClipboardFileRead::Files(paths) if !paths.is_empty() => paths,
             _ => return Ok(()),
         };
 
@@ -1035,8 +1038,10 @@ impl MainWindow {
         unsafe {
             let file_op: IFileOperation = CoCreateInstance(&FileOperation, None, CLSCTX_ALL)?;
 
-            file_op
-                .SetOperationFlags(FOF_ALLOWUNDO | FOF_RENAMEONCOLLISION | FOF_NOCONFIRMMKDIR)?;
+            // Leave collision handling to the Windows shell. In particular, a folder with the
+            // same name in the target should produce Explorer's merge confirmation instead of
+            // silently creating a " - Copy" sibling.
+            file_op.SetOperationFlags(FOF_ALLOWUNDO)?;
 
             let target_item: IShellItem = SHCreateItemFromParsingName(
                 &HSTRING::from(self.current_nav().current.to_string_lossy().to_string()),
@@ -2327,7 +2332,6 @@ pub fn handle_pending_actions(pending_action: Option<ItemViewerAction>, explorer
             ItemViewerAction::CreateFolder => explorer.create_new_folder(),
             ItemViewerAction::CreateFile => explorer.create_new_file(),
             ItemViewerAction::RefreshCurrentDirectory => {
-                clear_clipboard_files();
                 explorer.load_path();
             }
             ItemViewerAction::OpenTerminal => {

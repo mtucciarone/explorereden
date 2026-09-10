@@ -472,10 +472,23 @@ impl eframe::App for MainWindow {
         }
 
         if consume_clipboard_dirty() {
-            self.clipboard_paths = crate::gui::utils::get_clipboard_files().unwrap_or_default();
-            self.clipboard_is_cut = crate::gui::utils::is_clipboard_cut();
-            self.clipboard_has_files = !self.clipboard_paths.is_empty();
-            self.clipboard_set = self.clipboard_paths.iter().cloned().collect();
+            match crate::gui::utils::read_clipboard_files() {
+                crate::gui::utils::ClipboardFileRead::Files(paths) => {
+                    self.clipboard_is_cut = crate::gui::utils::is_clipboard_cut();
+                    self.clipboard_has_files = !paths.is_empty();
+                    self.clipboard_set = paths.iter().cloned().collect();
+                    self.clipboard_paths = paths;
+                }
+                crate::gui::utils::ClipboardFileRead::Empty => {
+                    self.clipboard_paths.clear();
+                    self.clipboard_set.clear();
+                    self.clipboard_is_cut = false;
+                    self.clipboard_has_files = false;
+                }
+                // Preserve the last known clipboard state when another process is temporarily
+                // using the clipboard. The next clipboard update will refresh it.
+                crate::gui::utils::ClipboardFileRead::Unavailable => {}
+            }
         }
 
         // Increase scroll speed for the explorer view.

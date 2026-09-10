@@ -865,6 +865,7 @@ pub fn handle_global_actions(
     is_recycle_bin_view: bool,
     theme_customizer_window: &mut ThemeCustomizer,
     settings_windows: &mut SettingsWindow,
+    hwnd: Option<HWND>,
 ) -> Option<ItemViewerAction> {
     let filtered_indices = &filter_state.cached_indices;
     let mut action: Option<ItemViewerAction> = None;
@@ -884,7 +885,7 @@ pub fn handle_global_actions(
     if is_cut_mode {
         let cancel_called = ui.input(|i| i.key_pressed(egui::Key::Escape));
         if cancel_called {
-            clear_clipboard_files();
+            clear_clipboard_files(hwnd);
         }
     }
 

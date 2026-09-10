@@ -3,7 +3,7 @@ use crate::core::portable;
 use crate::gui::i18n::I18n;
 use crate::gui::icons::IconCache;
 use crate::gui::theme::ThemePalette;
-use crate::gui::utils::{clear_clipboard_files, clickable_icon, expand_environment_variables};
+use crate::gui::utils::{clickable_icon, expand_environment_variables};
 use crate::gui::windows::containers::enums::ItemViewerNavAction;
 use crate::gui::windows::containers::structs::{
     Breadcrumb, ItemViewerDisplayMode, ItemViewerNavBarAction, RenderedBreadcrumb, TabView,
@@ -412,7 +412,6 @@ fn draw_navigation_bar_buttons(
         .clicked()
     {
         action.refresh_current_directory = true;
-        clear_clipboard_files();
     }
 
     // Action buttons
