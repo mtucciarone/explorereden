@@ -158,9 +158,11 @@
   Just download and launch — no installation, no setup.
 </p>
 
+<p align="center">
+  <img src="src/featureslist.png" width="600" />
+</p>
 
-
-
+<div style="display: none;">
 <h2 align="center">✨ Features</h2>
 
 <table align="center" style="border: none; border-collapse: collapse;">
@@ -169,78 +171,142 @@
 
 <h3>Core Functionality</h3>
 <ul>
-  <li><b>Lightning-fast GUI</b> that starts at the <b>root of your computer</b>, displaying all drives with comprehensive storage types and detailed information</li>
+  <li><b>Lightning-fast GUI</b> that starts at the <b>root of your computer</b>, displaying all drives with comprehensive storage information</li>
   <li><b>Asynchronous directory scanning</b> for ultra-fast file listing without blocking the UI</li>
-  <li><b>Intuitive navigation</b> with <b>Back / Forward / Up</b> controls for seamless browsing</li>
-  <li><b>Smart sidebar</b> with quick access to common folders and customizable favorites</li>
+  <li><b>Streaming directory enumeration</b> for responsive browsing of large directories</li>
+  <li><b>Intuitive navigation</b> with <b>Back / Forward / Up</b> controls and persistent navigation history</li>
+  <li><b>Tabbed navigation</b> with independent loading states, tab pinning, and automatic tab restoration</li>
+  <li><b>Split-pane Explorer view</b> for browsing multiple locations side-by-side</li>
+  <li><b>Collapsible sidebar</b> with quick access to common folders and customizable favorites</li>
+  <li><b>Native Recycle Bin support</b> with dedicated Explorer integration</li>
+</ul>
+
+<h3>Search, Filtering & Sorting</h3>
+<ul>
+  <li><b>Real-time file and directory filtering</b> as you type</li>
+  <li><b>Real-time file indexing</b> for fast search and filtering</li>
+  <li><b>Fuzzy matching</b> for intelligent search results</li>
+  <li><b>Lexicographic multi-column sorting</b> with Shift+Click to add sort columns and Ctrl+Click to remove them</li>
+  <li><b>Persistent column sorting</b> across sessions</li>
+  <li><b>Persistent column sizing and view settings</b> across sessions</li>
 </ul>
 
 <h3>Theme & Customization</h3>
 <ul>
   <li><b>Dark/Light mode switching</b> with instant toggle</li>
-  <li><b>Advanced theme customization</b> with full color palette editor</li>
+  <li><b>Advanced theme customization</b> with full color palette editing</li>
   <li><b>Customizable startup directory</b></li>
-  <li><b>Persistent settings</b> across restarts</li>
+  <li><b>System font selection</b> using installed Windows fonts</li>
+  <li><b>Persistent application settings</b> across restarts</li>
+  <li><b>Custom folder colors</b> for visual organization</li>
 </ul>
 
-<h3>Search & Filtering</h3>
+<h3>Tags & Organization</h3>
 <ul>
-  <li><b>Real-time file filtering</b> as you type</li>
-  <li><b>Fuzzy matching</b> for intelligent results</li>
-  <li><b>Performance-optimized filtering</b> with cached indices</li>
+  <li><b>Folder tagging system</b> for organizing files and directories</li>
+  <li><b>Custom tag colors</b> with Explorer visualization</li>
+  <li><b>Tag-aware Explorer views</b> that visually identify tagged objects</li>
+  <li><b>Favorites management</b> with drag-and-drop reorganization</li>
+  <li><b>Favorite reset and reorganization</b> capabilities</li>
 </ul>
 
 </td>
+
+
 
 <td width="50%" valign="top" style="border: none; padding: 12px;">
 
 <h3>User Interface & Navigation</h3>
 <ul>
-  <li><b>Tabbed navigation</b> with independent loading states</li>
-  <li><b>Interactive breadcrumb navigation</b> with inline editing</li>
-  <li><b>Responsive design</b> across window sizes</li>
+  <li><b>Interactive breadcrumb navigation</b> with inline path editing</li>
+  <li><b>Windows PATH expansion</b> when entering paths through the breadcrumb</li>
   <li><b>Modern toolbar</b> with file and folder actions</li>
-  <li><b>Tag management system</b> for organizing files and folders</li>
-  <li><b>File Gallery/Thumbnail view</b> for better file organization</li>
+  <li><b>Responsive window layout</b> with fullscreen, half-screen, and custom sizing modes</li>
+  <li><b>Improved window management</b> with proper maximization bounds and minimum size constraints</li>
+  <li><b>Hidden object visibility toggle</b> for showing or hiding hidden files and directories</li>
+  <li><b>Dedicated special-folder icons</b> for Desktop, Downloads, Home, Music, Videos, and Documents</li>
+  <li><b>Media Gallery views</b> with small, medium, large, and extra-large thumbnail layouts</li>
 </ul>
 
-<h3>Advanced Features</h3>
+<h3>File Operations</h3>
 <ul>
-  <li><b>Favorites system</b> with drag-and-drop support</li>
-  <li><b>Background folder size calculation</b> with progress tracking</li>
-  <li><b>Context menu operations</b> (cut, copy, paste, rename, delete)</li>
-  <li><b>Drag and drop files/folders</b> within the viewer</li>
-  <li><b>Portable device support</b> (iPhone, Android, external devices)</li>
-  <li><b>Raw/unmounted drive detection</b> (ISO, Linux partitions)</li>
-  <li><b>Multi-language Support using i18n</li>
+  <li><b>Context menu operations</b> including cut, copy, paste, rename, and delete</li>
+  <li><b>Copy Path</b> command with <b>Ctrl+Shift+C</b> keyboard shortcut</li>
+  <li><b>Drag and drop files and folders</b> within the Explorer</li>
+  <li><b>Drag and drop into breadcrumb folders</b> and directory tabs</li>
+  <li><b>Drag and drop to native Windows applications</b>, Desktop, File Explorer, and other OS objects</li>
+  <li><b>Windows Shell integration</b> with optional native Windows registry context menu commands</li>
 </ul>
 
-<h3>System Integration</h3>
+<h3>Devices & Filesystems</h3>
 <ul>
-  <li><b>Persistent settings</b> using efficient binary cache</li>
-  <li><b>Efficient drive space queries</b> with caching</li>
-  <li><b>Windows API integration</b></li>
-  <li><b>Custom executable icon</b> with file association</li>
-  <li><b>Improved window management</b></li>
+  <li><b>Portable device support</b> for iPhone, Android, and other connected devices</li>
+  <li><b>Raw and unmounted drive detection</b> for ISO media, Linux partitions, and other unsupported Windows filesystems</li>
+  <li><b>Comprehensive drive information</b> with efficient cached storage queries</li>
+  <li><b>CLI path support</b> for special Windows locations including <code>::MY_PC::</code>, <code>::RECYCLE_BIN::</code>, <code>shell:MyComputerFolder</code>, and <code>shell:RecycleBinFolder</code></li>
 </ul>
 
-<h3>Performance Optimizations</h3>
+<h3>Performance & System Integration</h3>
 <ul>
-  <li><b>NT-level filesystem access</b> via direct API calls</li>
-  <li><b>Background scanning</b> prevents UI freezing</li>
-  <li><b>Efficient caching</b> for directories and metadata</li>
-  <li><b>Streaming directory enumeration</b></li>
-  <li><b>Low memory footprint</b></li>
-  <li><b>Built-in benchmarking system</b></li>
+  <li><b>NT-level filesystem access</b> via direct Windows API calls</li>
+  <li><b>Background folder size calculation</b> with progress tracking and optional performance control</li>
+  <li><b>Optimized drive caching</b> with configurable cache duration</li>
+  <li><b>Optimized icon caching</b> using metadata-based cache keys and background loading</li>
+  <li><b>Efficient metadata caching</b> to minimize repeated filesystem operations</li>
+  <li><b>Low memory footprint</b> designed for responsive long-running use</li>
+  <li><b>Built-in performance benchmarking</b> with real-time measurements and comparison tools</li>
+  <li><b>Windows API integration</b> for native operating system functionality</li>
+  <li><b>Custom executable icon and file association</b></li>
+</ul>
+
+<h3>Localization</h3>
+<ul>
+  <li><b>Multi-language support</b> using i18n</li>
+  <li>English, Indonesian, Japanese, and Simplified/Traditional Chinese language support</li>
 </ul>
 
 </td>
 </tr>
 </table>
+</div>
 
 ## 🗺️ Roadmap
 
-### ✅ Implemented Features
+### 🚀 Upcoming Alpha Features
+- [ ] Add multi-tagging of objects
+- [ ] Enhanced theme customization, such as custom layouts, mix/match UI elements, styles, etc
+- [ ] Support network devices
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=mtucciarone%2Fedenexplorer&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=mtucciarone/edenexplorer&type=date&theme=dark&legend=top-left&sealed_token=NI5dBaKp_iac6WVxE46Q87Ri_obOUEGRld3AK0tm-wDI4Q-mCBlbqFcK5p1RpdylDEyaAME4_B-EyS3tCik9fMvdUFV5TfBCYtlmdNn1ivy4QWSSQXMGESzTxp438CEXvm1y49Mu2_r0YodXYa_oTaIMKkwsRKnAdRB1VCGBorGKIbqE63fU68LsK6bN" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=mtucciarone/edenexplorer&type=date&legend=top-left&sealed_token=NI5dBaKp_iac6WVxE46Q87Ri_obOUEGRld3AK0tm-wDI4Q-mCBlbqFcK5p1RpdylDEyaAME4_B-EyS3tCik9fMvdUFV5TfBCYtlmdNn1ivy4QWSSQXMGESzTxp438CEXvm1y49Mu2_r0YodXYa_oTaIMKkwsRKnAdRB1VCGBorGKIbqE63fU68LsK6bN" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=mtucciarone/edenexplorer&type=date&legend=top-left&sealed_token=NI5dBaKp_iac6WVxE46Q87Ri_obOUEGRld3AK0tm-wDI4Q-mCBlbqFcK5p1RpdylDEyaAME4_B-EyS3tCik9fMvdUFV5TfBCYtlmdNn1ivy4QWSSQXMGESzTxp438CEXvm1y49Mu2_r0YodXYa_oTaIMKkwsRKnAdRB1VCGBorGKIbqE63fU68LsK6bN" />
+ </picture>
+</a>
+
+## Keyboard Shortcuts
+- F1 - Toggle fullscreen
+- Ctrl+Shift+C - Copy selected path
+- Ctrl+W - Close current Tab
+- Ctrl+T - New Tab
+- Ctrl+Tab - Next Tab
+- Ctrl+Shift+Tab - Previous Tab
+- Ctrl+Shift+N - Create new folder in current directory
+- Ctrl+R (F5) - Refresh current directory
+- Alt+D - Select the address bar / current directory path
+- F2 - Rename current selected file (if any is selected inside the explorer)
+- Alt-Enter - Open current properties of current selected file  (if any is selected inside the explorer)
+- Home/End - Scroll to the top or bottom of the current explorer directory and select the first/last object
+- Alt + Left Arrow (Backspace) - Navigate backwards
+- Alt + Right Arrow (Mouse Button 4) - Navigate forwards
+- Alt + Up Arrow (Mouse Button 5) - Navigate upwards
+- Enter - If a file is selected, runs the default program
+
+
+### ✅ Implemented Features Changelog
 - [x] **Tabbed interface** with tab management, tab pinning (automatic restore on startup), and navigation
 - [x] **Search and filter engine** with real-time file indexing
 - [x] **Dark/Light theme switching** with toggle controls
@@ -279,38 +345,6 @@
 - [x] Lexicographic multi-column sorting using Shift+Click to add columns to sort rows or Ctrl+Click to remove column sorting
 - [x] Directory column sorting, sizing, and view changes persist across sessions
 
-### 🚀 Upcoming Alpha Features
-- [ ] Add multi-tagging of objects
-- [ ] Enhanced theme customization, such as custom layouts, mix/match UI elements, styles, etc
-- [ ] Support network devices
-
-## Star History
-
-<a href="https://www.star-history.com/?repos=mtucciarone%2Fedenexplorer&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=mtucciarone/edenexplorer&type=date&theme=dark&legend=top-left&sealed_token=NI5dBaKp_iac6WVxE46Q87Ri_obOUEGRld3AK0tm-wDI4Q-mCBlbqFcK5p1RpdylDEyaAME4_B-EyS3tCik9fMvdUFV5TfBCYtlmdNn1ivy4QWSSQXMGESzTxp438CEXvm1y49Mu2_r0YodXYa_oTaIMKkwsRKnAdRB1VCGBorGKIbqE63fU68LsK6bN" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=mtucciarone/edenexplorer&type=date&legend=top-left&sealed_token=NI5dBaKp_iac6WVxE46Q87Ri_obOUEGRld3AK0tm-wDI4Q-mCBlbqFcK5p1RpdylDEyaAME4_B-EyS3tCik9fMvdUFV5TfBCYtlmdNn1ivy4QWSSQXMGESzTxp438CEXvm1y49Mu2_r0YodXYa_oTaIMKkwsRKnAdRB1VCGBorGKIbqE63fU68LsK6bN" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=mtucciarone/edenexplorer&type=date&legend=top-left&sealed_token=NI5dBaKp_iac6WVxE46Q87Ri_obOUEGRld3AK0tm-wDI4Q-mCBlbqFcK5p1RpdylDEyaAME4_B-EyS3tCik9fMvdUFV5TfBCYtlmdNn1ivy4QWSSQXMGESzTxp438CEXvm1y49Mu2_r0YodXYa_oTaIMKkwsRKnAdRB1VCGBorGKIbqE63fU68LsK6bN" />
- </picture>
-</a>
-
-## Keyboard Shortcuts
-- F1 - Toggle fullscreen
-- Ctrl+Shift+C - Copy selected path
-- Ctrl+W - Close current Tab
-- Ctrl+T - New Tab
-- Ctrl+Tab - Next Tab
-- Ctrl+Shift+Tab - Previous Tab
-- Ctrl+Shift+N - Create new folder in current directory
-- Ctrl+R (F5) - Refresh current directory
-- Alt+D - Select the address bar / current directory path
-- F2 - Rename current selected file (if any is selected inside the explorer)
-- Alt-Enter - Open current properties of current selected file  (if any is selected inside the explorer)
-- Home/End - Scroll to the top or bottom of the current explorer directory and select the first/last object
-- Alt + Left Arrow (Backspace) - Navigate backwards
-- Alt + Right Arrow (Mouse Button 4) - Navigate forwards
-- Alt + Up Arrow (Mouse Button 5) - Navigate upwards
-- Enter - If a file is selected, runs the default program
 
 ## License
 This project is FOSS, released under the MIT License.
