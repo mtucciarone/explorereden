@@ -158,6 +158,7 @@ pub fn draw_item_viewer(
             is_recycle_bin_view,
             theme_customizer_window,
             settings_window,
+            hwnd,
         ) {
             action = Some(global_action);
         }
